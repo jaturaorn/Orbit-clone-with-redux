@@ -16,10 +16,11 @@ export default function Home() {
   //   dispatch(setPick(pick));
   // };
   return (
-    <main className="min-h-screen bg-[#f3f5f7]">
+    <main className="min-h-screen bg-white">
       <Navbar />
       <Tabs />
-      {pick == 1 ? <Block /> : <BlockMaker />}
+      <Block />
+      {/* {pick == 0 ? <Block /> : <BlockMaker />} */}
       <Footer />
     </main>
   );

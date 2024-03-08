@@ -21,7 +21,7 @@ const Tabs = () => {
       ${pick == 1 ? "text-white" : "text-black"}
        font-bold text-lg z-10`}
           onClick={() => {
-            handlePickChange(1);
+            handlePickChange(0);
           }}
         >
           Sender
@@ -30,14 +30,14 @@ const Tabs = () => {
           className={`absolute w-28 h-10 transition-all duration-300
      ${pick == 1 && "translate-x-[0]"} 
      ${pick == 2 && "translate-x-[100%]"} 
-     bg-red-500 rounded-xl border-b-[6px] border-r-[2px] border-red-700/55`}
+     bg-red-500 rounded-xl border-b-[5px] border-r-[2px] border-red-700/55`}
         ></div>
         <a
           className={`relative tab w-full flex justify-center items-center
           ${pick == 2 ? "text-white" : "text-black"} 
           h-full font-semibold text-lg z-10`}
           onClick={() => {
-            handlePickChange(2);
+            handlePickChange(1);
           }}
         >
           Maker
