@@ -9,7 +9,7 @@ import BlockMaker from "./components/Blockmaker/BlockMaker";
 import Footer from "./components/Footer";
 
 export default function Home() {
-  const pick = useSelector((state: any) => state.pick);
+  const pick = useSelector((state: any) => state.pick.value);
   // const dispatch = useDispatch();
 
   // const handlePickChange = (pick: any) => {
@@ -19,8 +19,7 @@ export default function Home() {
     <main className="min-h-screen bg-white">
       <Navbar />
       <Tabs />
-      <Block />
-      {/* {pick == 0 ? <Block /> : <BlockMaker />} */}
+      {pick == 0 ? <Block /> : <BlockMaker />}
       <Footer />
     </main>
   );

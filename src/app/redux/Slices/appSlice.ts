@@ -5,18 +5,18 @@ interface PickState {
 }
 
 const initialState: PickState = {
-  value: 1,
+  value: 0,
 };
 
 const appSlice = createSlice({
   name: "pick",
   initialState,
   reducers: {
-    setPick: (state, action: PayloadAction<number>) => {
+    changePick: (state, action: PayloadAction<number>) => {
       state.value = action.payload;
     },
   },
 });
 
-export const { setPick } = appSlice.actions;
+export const { changePick } = appSlice.actions;
 export default appSlice.reducer;
