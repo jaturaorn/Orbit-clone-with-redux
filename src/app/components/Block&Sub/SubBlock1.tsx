@@ -1,7 +1,7 @@
 "use client";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setShowModal } from "@/app/redux/Slices/appSlice";
+import { setShowModal2 } from "@/app/redux/Slices/appSlice";
 
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { SiInterbase } from "react-icons/si";
@@ -16,24 +16,24 @@ import { FaFeather } from "react-icons/fa";
 import DropDown1 from "@/app/DropDown1";
 
 const SubBlock1 = () => {
-  const transpose = useSelector((state: any) => state.app.enabled);
-  const showModal = useSelector((state: any) => state.app.showModal);
-  const chain2 = useSelector((state: any) => state.app.chain2);
+  const transpose = useSelector((state: any) => state.app.transpose);
+  const showModal2 = useSelector((state: any) => state.app.showModal2);
   const enabled = useSelector((state: any) => state.app.enabled);
+  const chain2 = useSelector((state: any) => state.app.chain2);
   const dispatch = useDispatch();
 
-  const handleToggleShowModal = () => {
-    dispatch(setShowModal(!showModal));
+  const handleToggleShowModal2 = () => {
+    dispatch(setShowModal2(!showModal2));
   };
 
   return (
     <div
-      className={`bg-base-300 absolute w-[525px]
- rounded-xl flex-col p-2 my-2 cursor-pointer transition-all duration-200
+      className={`bg-[#F5F5F5] absolute w-[440px]
+ rounded-xl flex-col p-[20px] cursor-pointer transition-all duration-200
 ${
-  transpose === true
-    ? "translate-x-[0%] top-[5%] left-[2.5%] translate-y-[0%] "
-    : "translate-x-[0%] translate-y-[0%] "
+  transpose == true
+    ? "translate-x-[0%] top-[10%]  translate-y-[0%] "
+    : "translate-x-[0%] top-[40%]  translate-y-[0%] "
 }
 `}
     >
@@ -42,7 +42,7 @@ ${
       <div className="flex gap-x-5 items-center">
         <div
           className="flex items-center gap-x-2"
-          onClick={handleToggleShowModal}
+          onClick={handleToggleShowModal2}
         >
           {chain2 == 0 && (
             <div className="flex gap-x-2">
@@ -110,19 +110,18 @@ ${
           <input
             type="text"
             placeholder="0"
-            className="input input-ghost w-full max-w-sm"
+            className="w-full bg-transparent text-right border-none outline-none"
           />
         </div>
         <div className="flex items-center gap-x-3">
-          <button className="bg-slate-400 rounded-full p-1 text-white">
-            <BsQuestionLg color="white" size={12} />
-          </button>
           {enabled ? (
             <div className="bg-white rounded-xl">
               <DropDown1 />
             </div>
           ) : (
-            ""
+            <button className="bg-slate-400 rounded-full p-1 text-white">
+              <BsQuestionLg color="white" size={12} />
+            </button>
           )}
         </div>
       </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setShowModal } from "@/app/redux/Slices/appSlice";
+import { setChain2, setShowModal } from "@/app/redux/Slices/appSlice";
 
 import { FaEthereum } from "react-icons/fa";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
@@ -13,12 +13,13 @@ import { DiNodejsSmall } from "react-icons/di";
 import { FaFeather } from "react-icons/fa";
 
 import DropDown1 from "@/app/DropDown1";
+import { useState } from "react";
 
 const SubBlock = () => {
-  const transpose = useSelector((state: any) => state.app.enabled);
+  const transpose = useSelector((state: any) => state.app.transpose);
   const showModal = useSelector((state: any) => state.app.showModal);
-  const chain1 = useSelector((state: any) => state.app.chain1);
   const enabled = useSelector((state: any) => state.app.enabled);
+  const chain1 = useSelector((state: any) => state.app.chain1);
   const dispatch = useDispatch();
 
   const handleToggleShowModal = () => {
@@ -27,13 +28,14 @@ const SubBlock = () => {
 
   return (
     <div
-      className={`bg-base-300 absolute w-11/12
-rounded-xl flex-col p-1 my-2 cursor-pointer transition-all duration-200
+      className={`bg-[#F5F5F5] absolute w-[440px]
+rounded-xl flex-col p-[20px] cursor-pointer transition-all duration-200
 ${
-  transpose === true
-    ? "translate-x-[0%] top-[40%] left-[5%] translate-y-[0%] "
-    : "translate-x-[5%] translate-y-[5%] "
+  transpose == true
+    ? "translate-x-[0%] top-[40%]  translate-y-[0%] "
+    : "translate-x-[0%] top-[10%]  translate-y-[0%] "
 }
+${enabled === true ? "translate-x-[0%] top-[7%]  translate-y-[0%] " : ""}
 `}
     >
       <div className="mb-2">
@@ -106,21 +108,15 @@ ${
           )}
           <MdOutlineKeyboardArrowDown />
         </div>
-        <div className="flex items-center gap-4">
+
+        <div className="flex items-center gap-x-2">
           <input
             type="text"
             placeholder="at least 0.00005"
-            className="input input-ghost w-full max-w-md"
+            className="w-full bg-transparent text-right border-none outline-none"
           />
-          <div className="flex items-center gap-x-3">
-            <p className="text-blue-600">Max</p>
-            {enabled ? (
-              <div className="bg-white rounded-xl">
-                <DropDown1 />
-              </div>
-            ) : (
-              ""
-            )}
+          <div className="items-center gap-x-3">
+            {enabled ? <DropDown1 /> : <p className="text-blue-600">Max</p>}
           </div>
         </div>
       </div>

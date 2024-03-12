@@ -1,7 +1,9 @@
 "use client";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setEnabled, setTranspose } from "@/app/redux/Slices/appSlice";
+import { setTranspose, setEnabled } from "@/app/redux/Slices/appSlice";
+
+import { useState } from "react";
 
 import { Switch } from "@headlessui/react";
 
@@ -12,11 +14,14 @@ import SubBlock1 from "./SubBlock1";
 import SubBlock from "./SubBlock";
 import InforText from "./InforText";
 import Modal from "../Modal";
+import Modal2 from "../Modal2";
 
 const Block = () => {
-  const enabled = useSelector((state: any) => state.app.enabled);
   const transpose = useSelector((state: any) => state.app.transpose);
   const showModal = useSelector((state: any) => state.app.showModal);
+  const showModal2 = useSelector((state: any) => state.app.showModal2);
+  const enabled = useSelector((state: any) => state.app.enabled);
+
   const dispatch = useDispatch();
 
   const handleToggleEnabled = () => {
@@ -30,16 +35,17 @@ const Block = () => {
   return (
     <main className="flex justify-center items-center">
       <div
-        className={`w-[480px] h-[500px] shadow-xl
-        ${transpose === true ? "h-[480px]" : ""}
+        className={`w-[480px] shadow-xl
+        ${transpose == true ? "h-[470px]" : "h-[500px]"}
         py-[24px] px-[20px] rounded-xl`}
       >
         <div className="h-full relative">
           <div className="flex justify-between items-center">
             <div className="flex gap-x-3">
               <p className="font-bold text-xl">Token</p>
-
-              <DropDown />
+              <div className={enabled ? "hidden" : ""}>
+                <DropDown />
+              </div>
             </div>
 
             <div className="flex items-center gap-3">
@@ -66,12 +72,14 @@ const Block = () => {
             </div>
           </div>
 
-          <div className=" h-[100px] bg-[#F5F5F5] rounded-xl mt-2">
+          <div>
             <SubBlock />
           </div>
 
           <div
-            className="flex justify-center absolute top-[35%] left-[50%] cursor-pointer"
+            className={`flex justify-center absolute
+            ${enabled === true ? "top-[31%]" : "top-[32%]"}
+            top-[32%] left-[50%] cursor-pointer z-10`}
             onClick={handleToggleTranspose}
           >
             <button className="w-8 h-8 p-2 rounded-lg bg-red-500 hover:bg-red-700 ">
@@ -79,14 +87,15 @@ const Block = () => {
             </button>
           </div>
 
-          <div className="h-[100px] bg-[#F5F5F5] rounded-xl mt-[50px]">
+          <div>
             <SubBlock1 />
           </div>
 
           <InforText />
         </div>
       </div>
-      {showModal ? <Modal /> : ""}
+      {showModal && <Modal />}
+      {showModal2 && <Modal2 />}
     </main>
   );
 };

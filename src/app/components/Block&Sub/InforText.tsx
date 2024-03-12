@@ -7,13 +7,18 @@ import { IoTime } from "react-icons/io5";
 
 const InforText = () => {
   const transpose = useSelector((state: any) => state.app.transpose);
+  const enabled = useSelector((state: any) => state.app.enabled);
   return (
-    <div className="flex flex-col my-5 gap-y-5">
+    <div
+      className={`flex flex-col 
+    ${enabled === true ? "h-[400px] mt-[260px]" : "h-[400px] mt-[255px]"}
+    mt-[245px] gap-y-5`}
+    >
       <div className={`flex justify-center`}>
         <button
-          className="bg-red-500 hover:bg-red-700 h-[40px]
+          className="bg-red-500 hover:bg-red-700 h-[50px]
               w-[440px] text-xl font-bold text-white shadow-lg
-              rounded-xl border-b-[5px] border-r-[2px] border-red-700/55"
+              rounded-full border-b-[5px] border-r-[3px] border-red-700/55"
         >
           SEND
         </button>

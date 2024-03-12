@@ -26,14 +26,14 @@ const Navbar = () => {
         <div className="flex items-center gap-x-2">
           <a
             className="bg-red-500 hover:bg-red-600 text-white 
-          font-bold py-[8px] px-[18px] border-b-[6px] border-r-4 border-red-700/55 rounded-full"
+          font-bold py-[8px] px-[18px] border-b-[6px] border-r-4 border-red-700/55 rounded-full cursor-pointer"
           >
             Connect a Wallet
           </a>
           <button
             className="w-10 h-10 bg-white 
           rounded-full flex justify-center items-center
-          shadow-lg"
+          shadow-lg cursor-pointer"
           >
             <GoMoon size={20} />
           </button>

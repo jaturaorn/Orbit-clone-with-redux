@@ -1,7 +1,7 @@
 "use client";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setChain1, setShowModal } from "../redux/Slices/appSlice";
+import { setChain2, setShowModal2 } from "../redux/Slices/appSlice";
 
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { SiInterbase } from "react-icons/si";
@@ -9,23 +9,23 @@ import { MdOutlineAndroid } from "react-icons/md";
 import { FaArrowRightArrowLeft } from "react-icons/fa6";
 import { IoInfiniteSharp } from "react-icons/io5";
 import { DiNodejsSmall } from "react-icons/di";
-import { FaFeather, FaEthereum } from "react-icons/fa";
+import { FaFeather } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
+import { FaEthereum } from "react-icons/fa";
 
-const Modal = () => {
-  const showModal = useSelector((state: any) => state.app.showModal);
-  const chain2 = useSelector((state: any) => state.app.chain2);
+const Modal2 = () => {
+  const showModal2 = useSelector((state: any) => state.app.showModal2);
+  const chain1 = useSelector((state: any) => state.app.chain1);
   const dispatch = useDispatch();
 
-  const clickAndClose = (a: number) => {
-    dispatch(setShowModal(!showModal));
-    dispatch(setChain1(a));
+  const clickAndClose2 = (a: number) => {
+    dispatch(setShowModal2(!showModal2));
+    dispatch(setChain2(a));
   };
 
-  const CloseModal = () => {
-    dispatch(setShowModal(!showModal));
+  const CloseModal2 = () => {
+    dispatch(setShowModal2(!showModal2));
   };
-
   return (
     <div
       className="fixed bg-black/30 bg-opacity-60 top-0
@@ -34,11 +34,11 @@ items-center"
     >
       <div
         className="w-[330px] max-w-full h-[365px] bg-white
-    rounded-xl p-4 flex flex-col relative"
+rounded-xl p-4 flex flex-col relative"
       >
         <div
           className="absolute top-4 left-[89%] cursor-pointer"
-          onClick={CloseModal}
+          onClick={CloseModal2}
         >
           <RxCross1 color="gray" size={23} />
         </div>
@@ -62,41 +62,45 @@ items-center"
             Popular
           </p>
           <div
-            className={`flex items-center gap-x-4 hover:bg-slate-100 p-1 
-        ${chain2 == 0 && "hidden"}`}
-            onClick={() => clickAndClose(0)}
+            className={`flex items-center gap-x-4 hover:bg-slate-100 p-1 ${
+              chain1 == 0 && "hidden"
+            }`}
+            onClick={() => {
+              clickAndClose2(0);
+            }}
           >
             <FaEthereum color="gray" size={25} />
             <p className="font-semibold uppercase">Ethereum</p>
           </div>
           <div
             className={`flex items-center gap-x-4 hover:bg-slate-100 p-1 
-        ${chain2 == 1 && "hidden"} `}
-            onClick={() => clickAndClose(1)}
+         `}
+            onClick={() => clickAndClose2(1)}
           >
             <SiInterbase size={25} color="blue" />
             <p className="font-semibold uppercase">base</p>
           </div>
           <div
-            className={`flex items-center gap-x-3 hover:bg-slate-100 p-1
-        ${chain2 == 2 && "hidden"}`}
-            onClick={() => clickAndClose(2)}
+            className={`flex items-center gap-x-3 hover:bg-slate-100 p-1 ${
+              chain1 == 2 && "hidden"
+            }`}
+            onClick={() => clickAndClose2(2)}
           >
             <MdOutlineAndroid size={25} />
             <p className="font-semibold uppercase">linea</p>
           </div>
           <div
             className={`flex items-center gap-x-3 hover:bg-slate-100 p-1
-        ${chain2 == 3 && "hidden"}`}
-            onClick={() => clickAndClose(3)}
+        ${chain1 == 3 && "hidden"}`}
+            onClick={() => clickAndClose2(3)}
           >
             <FaFeather size={25} />
             <p className="font-semibold uppercase">zkSync Era</p>
           </div>
           <div
             className={`flex items-center gap-x-3 hover:bg-slate-100 p-1
-        ${chain2 == 4 && "hidden"}`}
-            onClick={() => clickAndClose(4)}
+        ${chain1 == 4 && "hidden"}`}
+            onClick={() => clickAndClose2(4)}
           >
             <FaArrowRightArrowLeft size={25} color="purple" />
             <p className="font-semibold uppercase">Arbitrum</p>
@@ -109,16 +113,16 @@ items-center"
 
             <div
               className={`flex items-center gap-x-3 hover:bg-slate-100 p-1
-          ${chain2 == 5 && "hidden"}`}
-              onClick={() => clickAndClose(5)}
+          ${chain1 == 5 && "hidden"}`}
+              onClick={() => clickAndClose2(5)}
             >
               <FaArrowRightArrowLeft size={25} />
               <p className="font-semibold uppercase">zkSyne Lite</p>
             </div>
             <div
               className={`flex items-center gap-x-3 hover:bg-slate-100 p-1
-          ${chain2 == 6 && "hidden"}`}
-              onClick={() => clickAndClose(6)}
+          ${chain1 == 6 && "hidden"}`}
+              onClick={() => clickAndClose2(6)}
             >
               <IoInfiniteSharp
                 size={25}
@@ -128,8 +132,8 @@ items-center"
             </div>
             <div
               className={`flex items-center gap-x-3 hover:bg-slate-100 p-1
-          ${chain2 == 7 && "hidden"}`}
-              onClick={() => clickAndClose(7)}
+          ${chain1 == 7 && "hidden"}`}
+              onClick={() => clickAndClose2(7)}
             >
               <IoInfiniteSharp
                 size={25}
@@ -139,8 +143,8 @@ items-center"
             </div>
             <div
               className={`flex items-center gap-x-3 hover:bg-slate-100 p-1
-          ${chain2 == 8 && "hidden"}`}
-              onClick={() => clickAndClose(8)}
+          ${chain1 == 8 && "hidden"}`}
+              onClick={() => clickAndClose2(8)}
             >
               <DiNodejsSmall size={25} />
               <p className="font-semibold uppercase">loopring</p>
@@ -152,4 +156,4 @@ items-center"
   );
 };
 
-export default Modal;
+export default Modal2;

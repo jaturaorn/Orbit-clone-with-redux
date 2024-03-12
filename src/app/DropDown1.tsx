@@ -20,7 +20,7 @@ const DropDown1 = () => {
       <div className="relative inline-block">
         <button
           type="button"
-          className="inline-flex items-center p-2 font-semibold gap-x-2
+          className="inline-flex items-center p-1 font-semibold gap-x-2
 bg-slate-300/25 rounded-lg hover:bg-slate-500/25 focus:outline-none"
           onClick={toggleDropdown}
         >

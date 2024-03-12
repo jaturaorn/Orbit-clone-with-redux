@@ -4,28 +4,31 @@ import TextLogo from "./TextLogo";
 
 const BlockMaker = () => {
   return (
-    <main className="flex justify-center my-5">
-      <div className=" w-full max-w-lg shadow-2xl bg-base-100 h-auto p-3">
-        <div className="card-body">
-          <div className="flex justify-between items-center">
-            <p className="font-bold text-xl">Early Access</p>
-            <Image
-              src={"/New.png"}
-              width={200}
-              height={200}
-              alt="New"
-              className="w-20 h-[70px]"
-            />
-          </div>
-
-          <Text />
-
-          <TextLogo />
-
-          <button className=" bg-red-500 hover:bg-red-700 btn-block text-xl font-bold text-white shadow-lg">
-            Learn More on Testnet
-          </button>
+    <main className="flex justify-center items-center">
+      <div className="w-[480px] h-[390px] shadow-xl py-[24px] px-[20px] rounded-xl">
+        <div className="flex justify-between items-center">
+          <p className="font-bold text-xl">Early Access</p>
+          <Image
+            src={"/New.png"}
+            width={200}
+            height={200}
+            alt="New"
+            className="w-20 h-[70px]"
+          />
         </div>
+
+        <Text />
+
+        <TextLogo />
+
+        <button
+          className="bg-red-500 hover:bg-red-700 h-[50px]
+              w-[440px] text-xl font-bold text-white shadow-lg
+              rounded-full border-b-[5px] border-r-[3.5px] border-red-700/55
+              mb-[20px] cursor-pointer"
+        >
+          Learn More on Testnet
+        </button>
       </div>
     </main>
   );
