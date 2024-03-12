@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { changePick } from "../redux/Slices/appSlice";
 
 const Tabs = () => {
-  const pick = useSelector((state: any) => state.pick.value);
+  const pick = useSelector((state: any) => state.app.value);
   const dispatch = useDispatch();
 
   const handlePickChange = (newPick: number) => {

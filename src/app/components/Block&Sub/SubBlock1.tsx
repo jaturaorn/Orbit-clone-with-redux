@@ -1,3 +1,8 @@
+"use client";
+
+import { useDispatch, useSelector } from "react-redux";
+import { setShowModal } from "@/app/redux/Slices/appSlice";
+
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { SiInterbase } from "react-icons/si";
 import { BsQuestionLg } from "react-icons/bs";
@@ -11,23 +16,33 @@ import { FaFeather } from "react-icons/fa";
 import DropDown1 from "@/app/DropDown1";
 
 const SubBlock1 = () => {
+  const transpose = useSelector((state: any) => state.app.enabled);
+  const showModal = useSelector((state: any) => state.app.showModal);
+  const chain2 = useSelector((state: any) => state.app.chain2);
+  const enabled = useSelector((state: any) => state.app.enabled);
+  const dispatch = useDispatch();
+
+  const handleToggleShowModal = () => {
+    dispatch(setShowModal(!showModal));
+  };
+
   return (
     <div
       className={`bg-base-300 absolute w-[525px]
  rounded-xl flex-col p-2 my-2 cursor-pointer transition-all duration-200
 ${
   transpose === true
-    ? "translate-x-[0%] top-[13%] left-[5%] translate-y-[0%] "
-    : "translate-x-[0%] top-[40%] left-[5%] translate-y-[0%] "
+    ? "translate-x-[0%] top-[5%] left-[2.5%] translate-y-[0%] "
+    : "translate-x-[0%] translate-y-[0%] "
 }
 `}
     >
       {/* <div className="bg-red-300 w-64 h-64 ">{transpose + "test"}</div> */}
       <p>To</p>
-      <div className="flex justify-between items-center">
+      <div className="flex gap-x-5 items-center">
         <div
           className="flex items-center gap-x-2"
-          onClick={() => setShowModal2(true)}
+          onClick={handleToggleShowModal}
         >
           {chain2 == 0 && (
             <div className="flex gap-x-2">

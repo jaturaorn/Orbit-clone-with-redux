@@ -1,5 +1,8 @@
 "use client";
 
+import { useDispatch, useSelector } from "react-redux";
+import { setEnabled, setTranspose } from "@/app/redux/Slices/appSlice";
+
 import { Switch } from "@headlessui/react";
 
 import { ImLoop } from "react-icons/im";
@@ -8,36 +11,48 @@ import DropDown from "../DropDown";
 import SubBlock1 from "./SubBlock1";
 import SubBlock from "./SubBlock";
 import InforText from "./InforText";
+import Modal from "../Modal";
 
 const Block = () => {
+  const enabled = useSelector((state: any) => state.app.enabled);
+  const transpose = useSelector((state: any) => state.app.transpose);
+  const showModal = useSelector((state: any) => state.app.showModal);
+  const dispatch = useDispatch();
+
+  const handleToggleEnabled = () => {
+    dispatch(setEnabled(!enabled));
+  };
+
+  const handleToggleTranspose = () => {
+    dispatch(setTranspose(!transpose));
+  };
+
   return (
     <main className="flex justify-center items-center">
-      {"Block"}
-      {/* <div
-        className={`w-[480px] h-[500px] shadow-xl 
-        py-[24px] px-[20px] bg-slate-200/55 rounded-xl`}
-        // ${transpose === true ? "h-[480px]" : ""}
+      <div
+        className={`w-[480px] h-[500px] shadow-xl
+        ${transpose === true ? "h-[480px]" : ""}
+        py-[24px] px-[20px] rounded-xl`}
       >
-        <div className="h-full bg-lime-300">
+        <div className="h-full relative">
           <div className="flex justify-between items-center">
             <div className="flex gap-x-3">
-              <p className="font-bold text-xl">Token</p> */}
-      {/* className={enabled ? "hidden" : ""} */}
-      {/* <DropDown />
-            </div> */}
+              <p className="font-bold text-xl">Token</p>
 
-      {/* <div className="flex items-center gap-3">
+              <DropDown />
+            </div>
+
+            <div className="flex items-center gap-3">
               <p className={`font-bold text-xl`}>
-                <a className="text-slate-500">V1</a> */}
-      {/* {enabled ? (
+                {enabled ? (
                   <a className="text-blue-500">V2</a>
                 ) : (
                   <a className="text-slate-500">V1</a>
-                )} */}
-      {/* </p>
+                )}
+              </p>
               <Switch
                 checked={enabled}
-                onChange={setEnabled}
+                onChange={handleToggleEnabled}
                 className={`${
                   enabled ? "bg-blue-600" : "bg-gray-200"
                 } relative inline-flex h-6 w-11 items-center rounded-full`}
@@ -49,37 +64,29 @@ const Block = () => {
                 />
               </Switch>
             </div>
-          </div> */}
+          </div>
 
-      {/* <div>
+          <div className=" h-[100px] bg-[#F5F5F5] rounded-xl mt-2">
             <SubBlock />
           </div>
 
           <div
-            className="flex justify-center absolute top-[33%] left-[50%] cursor-pointer"
-            onClick={() => setTranspose(!transpose)}
+            className="flex justify-center absolute top-[35%] left-[50%] cursor-pointer"
+            onClick={handleToggleTranspose}
           >
-            <button className="w-8 h-8 p-2 rounded-lg bg-red-500 hover:bg-red-700">
+            <button className="w-8 h-8 p-2 rounded-lg bg-red-500 hover:bg-red-700 ">
               <ImLoop size={15} color="white" className="w-full h-full" />
             </button>
           </div>
 
-          <div>
+          <div className="h-[100px] bg-[#F5F5F5] rounded-xl mt-[50px]">
             <SubBlock1 />
-          </div>
-
-          <div className={`mt-[225px] h-[300px] `}>
-            <button
-              className="btn bg-red-500 hover:bg-red-700 
-              w-[525px] text-xl font-bold text-white shadow-lg"
-            >
-              SEND
-            </button>
           </div>
 
           <InforText />
         </div>
-      </div> */}
+      </div>
+      {showModal ? <Modal /> : ""}
     </main>
   );
 };

@@ -9,12 +9,8 @@ import BlockMaker from "./components/Blockmaker/BlockMaker";
 import Footer from "./components/Footer";
 
 export default function Home() {
-  const pick = useSelector((state: any) => state.pick.value);
-  // const dispatch = useDispatch();
+  const pick = useSelector((state: any) => state.app.value);
 
-  // const handlePickChange = (pick: any) => {
-  //   dispatch(setPick(pick));
-  // };
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
